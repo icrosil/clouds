@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>                                                                     
+    <script src="jquery.js"></script>  
+    <script type="text/javascript">
+     $(document).ready(function(){
+  $("#txt_name").keyup(function(){
+    alert(this.value);
+  });
+});
+    var name
+      
+     function  start(){
+      var n = $(window).width()/2-180              
+      $("#startPanel").animate({left: "+="+n}, 2600). animate({ opacity: 0 }, "slow").empty().
+      css({'backgroundImage': 'url(1.png)','background-color':'transparent','border':'0px','height':'153px','background-repeat': 'no-repeat' }).animate({ opacity: 1 }, "slow");
+    value = $("#txt_name").attr('value');
+alert(name);
+
+                     
+     }
+     function enter(e)
+     {
+        if (e.keyCode == 13) document.getElementById('GoingBut').click();
+     }
+    
+    </script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+  
+  </head>  
+  <body>
+        
+      <div align="center" id="startPanel">
+        <form onkeyup="if ( event.keyCode == 13 ) start();">
+        <h2>Welcome to Clouds</h2>
+        
+        <label>Enter name<br>
+        <input type="text" id="name" autofocus onkeydown="enter(event);"> </label>
+        <input onClick="start();" id='GoingBut'type="button" value="Sending">
+        
+        </form>
+       </div> 
+       lalala
+       <div id="info">
+       </div>
+  
+  </body>
+</html>

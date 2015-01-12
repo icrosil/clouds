@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>hide demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+  <style>
+  div {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    border: 1px solid #000;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+</head>
+<body>
+ 
+<button>hide the div</button>
+<div></div>
+ 
+<script>
+$( "button" ).click(function() {
+  $( "div" ).hide( "drop", { direction: "down" }, "slow" );
+});
+</script>
+ 
+</body>
+</html>

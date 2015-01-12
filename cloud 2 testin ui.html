@@ -1,0 +1,429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>  
+  <head>  
+    <meta http-equiv="content-type" content="text/html" charset=UTF-8">  
+    <meta name="generator" content="PSPad editor, www.pspad.com">  
+    <title>Clouds
+    </title>                                                                       
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>   
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>     
+<noscript>
+
+ Для полной функциональности этого сайта необходимо включить JavaScript.
+ Вот <a href="http://www.enable-javascript.com/ru/" target="_blank">
+ инструкции, как включить JavaScript в вашем браузере</ a>.
+</noscript>
+<script type="text/javascript"> 
+ 
+  function init (){
+
+
+   running($("#Cu"));
+    running($("#Ac"));
+     running($("#Sc"));
+     var nVer = navigator.appVersion;
+var nAgt = navigator.userAgent;
+var browserName  = navigator.appName;
+var fullVersion  = ''+parseFloat(navigator.appVersion); 
+var majorVersion = parseInt(navigator.appVersion,10);
+var nameOffset,verOffset,ix;
+
+// In Opera, the true version is after "Opera" or after "Version"
+if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
+ browserName = "Opera";
+ fullVersion = nAgt.substring(verOffset+6);
+ if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+   fullVersion = nAgt.substring(verOffset+8);
+}
+// In MSIE, the true version is after "MSIE" in userAgent
+else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
+ browserName = "Microsoft Internet Explorer";
+ fullVersion = nAgt.substring(verOffset+5);
+}
+// In Chrome, the true version is after "Chrome" 
+else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
+ browserName = "Chrome";
+ fullVersion = nAgt.substring(verOffset+7);
+}
+// In Safari, the true version is after "Safari" or after "Version" 
+else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
+ browserName = "Safari";
+ fullVersion = nAgt.substring(verOffset+7);
+ if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+   fullVersion = nAgt.substring(verOffset+8);
+}
+// In Firefox, the true version is after "Firefox" 
+else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
+ browserName = "Firefox";
+ fullVersion = nAgt.substring(verOffset+8);
+}
+// In most other browsers, "name/version" is at the end of userAgent 
+else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < 
+          (verOffset=nAgt.lastIndexOf('/')) ) 
+{
+ browserName = nAgt.substring(nameOffset,verOffset);
+ fullVersion = nAgt.substring(verOffset+1);
+ if (browserName.toLowerCase()==browserName.toUpperCase()) {
+  browserName = navigator.appName;
+ }
+}
+// trim the fullVersion string at semicolon/space if present
+if ((ix=fullVersion.indexOf(";"))!=-1)
+   fullVersion=fullVersion.substring(0,ix);
+if ((ix=fullVersion.indexOf(" "))!=-1)
+   fullVersion=fullVersion.substring(0,ix);
+
+majorVersion = parseInt(''+fullVersion,10);
+if (isNaN(majorVersion)) {
+ fullVersion  = ''+parseFloat(navigator.appVersion); 
+ majorVersion = parseInt(navigator.appVersion,10);
+}
+
+
+//alert(browserName);
+if (browserName!='Chrome')
+{
+alert('ALARM, Alarm Danger Danger NON Chrome browser! Korabl!!!!');
+ document.location.replace("http://www.sanger.dk/");
+ }   
+  }
+
+    var name ='bubu';
+    var h='Привет!';
+    var textIntro='<div id="textIntro"><br>Это история только в начале своего пути!<br><br> Откроем же первую страницу! <br>click me!</div>';
+    var textIntro2='<div id="textIntro2"><br>Нужно найти всё, на что можно кликнуть, иначе остальные обидяться!<br>(Меня ты уже кликнул, я не буду обижаться)</div>';
+    var textIntro3='<div id="textIntro3">"Эй!<br> Мне щекотно уже, хватит клацать меня <br>XDDD</div>' ;
+    var prev='textIntro';
+    var textCu='<div id="C"><br>Это <big>Стиви</big> - он очень хорошее облачко, некоторые называют его тучкой, но на самом деле он облачко. <br> Кстати у него есть друг, и он не далеко(по центру).</div>';
+    var textSc='<div id="S"><br>Это <big>Альберт</big> он уже старенький и немного расплывчатый, но он мечтает стать таким же как и когда то... Поможем ему?<br> <a href="http://www.mrdoob.com/lab/javascript/webgl/clouds/" target="_blank">click me!</a> </div>';
+    var textAc='<div id="A"><br>Это <big>Роберт</big>, он "друг" Стиви.<br>Почему "друг"? Потому что на самом деле он его не любит, а завидует, ведь у Стиви идеальная форма.<br>Роберт придумал коварный план, и если вы найдете секретную комбинацию он осуществится...</div>';
+    var idCu="C";
+    var idSc="S";
+    var idAc="A";
+    var textAd='<div id="Ad"><br>Это Стиви, но его испортил Роберт, его друг... Стиви не знает за что его так наказал Роберт, и он плачет по своему другу...<div>';
+    var idAd="Ad";
+    var textGrass='<div id="Grass"><br>Это <big>Травинки-Сестренки</big> они растут на Земле, и смотрят далеко-далеко вверх, туда где летают их друзья Стиви, Роберт и Альберт.</div>';
+    var idGrass="Grass"
+    var my_div = null;
+    var my_Tab = null;
+    var animateCloud1=false; 
+    var animateAd=false; 
+    var animateCloud2=false;
+    var animateCloud3=false;
+    var admincode=0;
+    var i=0;
+    var close=true;
+   
+  function randomNumber (m,n)
+{
+  m = parseInt(m);
+  n = parseInt(n);
+  return Math.floor( Math.random() * (n - m + 1) ) + m;
+}
+
+
+ function getAvailableLeft(ik){
+ /*result= ik.offset().left-10;
+ if (result<0) return 0;
+ else 
+ return result;*/
+ return 100;
+ }
+ function getAvailableRight(ik){
+ //return window.width-ik.offset().left-ik.width-10;
+ return 80;
+ }
+ function getAvailableTop(ik){
+ return 100;
+ }
+ function getAvailableBot(ik){
+ return 100;
+ }
+ function intToString(x){
+ if (x<0) {x*=-1;return "-="+x;}
+ else return "+="+x;
+ }
+ function getTime(x,y){
+ return Math.sqrt(x*x+y*y)/25*1000;
+ }
+
+ function setClose(){close=true; /*alert('not free');*/}
+ function setFree(){close=false;/*alert('free');*/}
+function running(ik){
+   var dx;
+   var dy;
+   var t;
+ 
+  // alert("dx="+dx+";dy="+dy);
+   function KdAnim(){
+   dx=randomNumber(-getAvailableLeft(ik),getAvailableRight(ik));
+    dy=randomNumber(-getAvailableTop(ik),getAvailableBot(ik));
+    t=getTime(dx,dy);
+   ik.animate({top: intToString(dy),left:intToString(dx)}, t,KdHide) ;}
+ 
+  function KdHide(){                    
+    ik.animate({top: intToString(-dy)}, t/2).animate({left:intToString(-dx)},t/2,KdAnim) ;}
+    KdAnim();
+      
+  
+}
+
+   function clickCloud1(){  
+   if (name!='bubu'&&close!=true){
+    animateCloud1=!animateCloud1;
+    setClose();
+    
+    if(animateCloud1==true){
+     
+        running($("#Cu"));
+        
+    } else {
+        $("#Cu").stop(true,false);
+        running($("#Ac"));
+        running($("#Sc"));
+        //TODO return initial x,y for cloud1;
+        
+   }
+   
+   
+   
+   smenaOkna(textCu,idCu,200);
+   
+   if (admincode==0) admincode=1
+        else admincode=0
+  }
+  }
+  
+   function clickAd(){  
+   if(name!='bubu'&&close!=true){
+    animateAd=!animateAd;
+    setClose();
+    
+    if(animateAd==true){
+     
+        running($("#adminmenu"));
+        
+    } else {
+        //$("#adminmenu").stop(true,false);
+        running($("#Ac"));
+        running($("#Sc"));
+        //TODO return initial x,y for cloud1;
+        
+   }
+   smenaOkna(textAd,idAd,200);
+   }
+   }
+    function clickCloud2(){  
+    if (name!='bubu'&&close!=true){
+    animateCloud2=!animateCloud2;
+    setClose();
+    
+    if(animateCloud2==true){
+      
+        running($("#Ac"));
+         
+    } else {
+        $("#Ac").stop(true,false);
+        running($("#Sc"));
+        running($("#Cu"));
+        //TODO return initial x,y for cloud1;
+   }      
+   
+   
+   
+   
+   
+   smenaOkna(textAc,idAc,200);
+  
+   if (admincode==1) admincode=2
+        else admincode=0
+  }
+  }
+  function rain()
+   {
+     /* var nDiv = document.createElement("div");
+    
+    i=i+1;
+    running("#adminmenu");
+    nDiv.id=i;
+    nDiv.className="voda";
+    
+    
+    var n = $("#adminmenu").width()+$("#adminmenu").offset().left;
+     alert(n);
+    nDiv.left=100;//randomNumber($("#adminmenu").offset().left,n);
+    nDiv.top=100;//$("#adminmenu").offset().top+$("#adminmenu").offset().height;
+     
+    var m=randomNumber(100,200);
+    
+    document.body.insertBefore(nDiv);
+     
+    $("#"+i).show("slide",{direction:"right"},2000);
+          
+    /*$("#"+i).hide("drop",{direction:"down"},"slow"); */
+    running($("#adminmenu"));
+    function cr(){ 
+     $('#'+i).remove();
+     i=i+1;
+     var nDiv = document.createElement("div");
+      nDiv.id=i;
+    nDiv.className="voda";
+    var m=$("#adminmenu").offset().left;
+    var n = $("#adminmenu").width()+m;
+   
+    nDiv.style.left=randomNumber(m,n);
+    nDiv.style.top=$("#adminmenu").offset().top+$("#adminmenu").offset().height;
+     
+   document.body.insertBefore(nDiv);
+     $("#"+i).show("slide",{direction:"up"},300,mv);}
+     function mv(){$("#"+i).hide("drop",{direction:"down"},750,cr);
+     
+
+     }
+     cr();
+     
+  
+  
+  
+  
+    
+   
+   }
+  
+    function clickCloud3(){ 
+    if (name!='bubu'&&close!=true){
+    animateCloud3=!animateCloud3;
+    setClose();
+    
+    if(animateCloud3==true){
+      
+        running($("#Sc"));
+        
+    } else {
+        $("#Sc").stop(true,false);
+        running($("#Ac"));
+        running($("#Cu"));
+        //TODO return initial x,y for cloud1;
+   }
+   smenaOkna(textSc,idSc,200);
+  
+   if (admincode==2) admincode=3
+        else admincode=0
+  }
+  }
+  
+  function upset(){
+  
+    var newDiv = document.createElement("div");
+    newDiv.id='adminmenu';
+    newDiv.onclick=function(){
+    clickAd();
+    }
+    var n = $(window).width()-320;
+  
+  
+  
+  
+  newDiv.innerHTML = "<br><br><br> click me..";
+  //alert(name);
+  
+     $("#Cu").hide("drop",{direction: "up"},"slow");
+     document.body.insertBefore(newDiv);
+     $("#adminmenu").show("slide",{direction:"right"},2000).animate({right: "+="+n,top:"-=155"}, 2000,function(){rain();});
+  }
+  
+  function grassT(){
+  if (name!='bubu'&&close!=true){
+   smenaOkna(textGrass,idGrass,200);
+   //alert(admincode);
+   
+   
+   if (admincode==3) upset();  
+   else admincode=0 } 
+  }
+   
+  
+  function smenaOkna(b,s,m){
+    setClose();
+    $("#"+prev). animate( { opacity:0 },600);
+    //$("#textin").animate({width:"0%"},1300   ,
+    
+    
+     if(prev!=s) {document.all.textin.innerHTML=b;prev=s;}
+     else {document.all.textin.innerHTML=textIntro3;prev='textIntro3';} 
+     
+      
+     //$("#textin").animate({width:"+="+m},1300,
+     $("#"+prev). show( "scale", { direction: "down" }, 700,function(){setFree();}); 
+     
+                
+    
+     
+      
+       } 
+  function  createTab(){  
+     newDiv1 = document.createElement("div");
+    newDiv1.id='textin';
+    newDiv1.innerHTML = textIntro; 
+    newDiv1.onclick=function ()
+    {
+     if (name!='bubu'&&close!=true){
+    smenaOkna(textIntro2,'textIntro2',200);}
+    
+    };
+    document.body.insertBefore(newDiv1,document.body.firstChild);
+    
+    $("#textin").animate({opacity:0}, 7000).animate({opacity:1}, 700,function(){setFree()}); /*Zdes nugna такая функция - складывается табичка, исчезает текст, она мигает (или что то типа) появляется новый текст и табличка расширяется*/
+     
+   }
+    
+   function  start(){
+   //alert('1');
+   setClose();
+  // alert('2');
+    var n = $(window).width()/2-180              
+    $("#startPanel"). hide( "drop", { direction: "down" }, "slow",function(){
+    newDiv = document.createElement("div");
+    newDiv.id='new';
+  
+  
+  
+  
+  name = $("#name").val();
+  if(name.length>10||name.length<1)name='Кирилл';
+  newDiv.innerHTML = "<br><br><br>"+h+" "+name+"!";
+  //alert(name);
+  document.body.insertBefore(newDiv,document.body.firstChild);
+  
+     $("#new").show("slide",{direction:"right"},2000).animate({right: "+="+n}, 2000).animate({opacity:1}, 2000).
+     hide("drop",{direction: "up"},"slow",createTab());
+    } );
+     }
+     
+  
+     
+     
+     
+    </script>     
+    <link rel="stylesheet" href="style.css" type="text/css">     
+  </head>     
+  <body onLoad="init();">      
+    <div id="Cu" align="center" class='Ob' onclick="clickCloud1();" > <span color="green" style="line-height:200px"> нажми на меня</span>     
+    </div>       
+    <div id="Ac" class='Ob' onclick="clickCloud2();">       
+    </div>          
+    <div id="Sc"  class='Ob' onclick="clickCloud3();">       
+    </div>           
+    <div align="center" id="startPanel">        
+      <form onsubmit="start(); return false;">        <h2>Приветствуем вас в Волшебной стране Математики!</h2>                
+        <label><big>Как Вас зовут?</big>
+          <br>        
+          <input type="text" id="name" autofocus  align="center"> 
+        </label>                
+        <input type="submit" style="display: none" onsubmit="start();">        
+      </form>       
+    </div>           
+    <div id="info" onclick="grassT();">       
+    </div>           
+  </body>
+</html>
